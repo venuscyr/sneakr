@@ -7,6 +7,8 @@ const Login = () => {
   const [password, setPassword] = useState(""); // Pour capturer le mot de passe
   const [error, setError] = useState(""); // Pour afficher une erreur si besoin
   const navigate = useNavigate();
+
+
   const handleSubmit = async (e) => {
     e.preventDefault(); // Empêche le rechargement de la page
 
@@ -31,7 +33,8 @@ const Login = () => {
       console.log("Login success:", data);
 
       // Enregistre le token dans le localStorage pour une future utilisation
-      localStorage.setItem("token", data.jwt);
+      localStorage.setItem("token", data.jwt);// Token pour les requêtes
+      localStorage.setItem("userId", data.user.id); // ID utilisateur pour la wishlist
 
       // Réinitialise les champs et supprime les erreurs
       setEmail("");

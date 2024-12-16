@@ -22,6 +22,8 @@ const HomePage = () => {
     fetchSneakers();
   }, []);
 
+
+
   const filteredSneakers = sneakers.filter((sneaker) =>
     sneaker.attributes.name.toLowerCase().includes(searchQuery.toLowerCase())
   );

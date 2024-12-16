@@ -1,10 +1,12 @@
 import { useState } from "react";
-import { Link } from 'react-router-dom';
+import { Link,useNavigate } from 'react-router-dom';
 
 const Register = () => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -24,7 +26,7 @@ const Register = () => {
       const data = await response.json();
       if (response.ok) {
         console.log("Inscription réussie :", data);
-        alert("A PRESENT CONNECTEZ VOUS !");
+        navigate("/Login")
       } else {
         console.error("Erreur :", data);
         alert("Erreur : " + data.error.message);
@@ -33,6 +35,7 @@ const Register = () => {
       console.error("Erreur réseau :", error);
       alert("Erreur réseau : " + error.message);
     }
+    
   };
 
   return (

@@ -14,7 +14,7 @@
             "name": "Apache 2.0",
             "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
         },
-        "x-generation-date": "2024-12-12T10:36:53.622Z"
+        "x-generation-date": "2024-12-16T20:54:36.898Z"
     },
     "x-strapi-config": {
         "plugins": [
@@ -2019,20 +2019,6 @@
                                 ],
                                 "example": "string or id"
                             },
-                            "users": {
-                                "type": "array",
-                                "items": {
-                                    "oneOf": [
-                                        {
-                                            "type": "integer"
-                                        },
-                                        {
-                                            "type": "string"
-                                        }
-                                    ],
-                                    "example": "string or id"
-                                }
-                            },
                             "sneakerId": {
                                 "type": "string"
                             },
@@ -2604,20 +2590,6 @@
                             }
                         }
                     },
-                    "users": {
-                        "type": "array",
-                        "items": {
-                            "type": "object",
-                            "properties": {
-                                "id": {
-                                    "type": "number"
-                                },
-                                "documentId": {
-                                    "type": "string"
-                                }
-                            }
-                        }
-                    },
                     "sneakerId": {
                         "type": "string"
                     },
@@ -2677,20 +2649,6 @@
                                         },
                                         "documentId": {
                                             "type": "string"
-                                        }
-                                    }
-                                },
-                                "users": {
-                                    "type": "array",
-                                    "items": {
-                                        "type": "object",
-                                        "properties": {
-                                            "id": {
-                                                "type": "number"
-                                            },
-                                            "documentId": {
-                                                "type": "string"
-                                            }
                                         }
                                     }
                                 },

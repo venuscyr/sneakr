@@ -30,7 +30,6 @@ const Login = () => {
       }
 
       const data = await response.json();
-      console.log("Login success:", data);
 
       // Enregistre le token dans le localStorage pour une future utilisation
       localStorage.setItem("token", data.jwt);// Token pour les requêtes

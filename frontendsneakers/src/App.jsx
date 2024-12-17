@@ -5,6 +5,7 @@ import Login from './components/Login';
 import Register from './components/Register';
 import HomePage from './components/HomePage';
 import Wishlist from './components/Wishlist';
+import ProfilPage from './components/ProfilPage';
 
 function App() {
   return (
@@ -15,7 +16,8 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/wishlist" element={<Wishlist />} /> 
+        <Route path="/wishlist" element={<Wishlist />} />
+        <Route path="/ProfilPage" element={<ProfilPage />} /> 
       </Routes>
     </Router>
     </div>

@@ -5,65 +5,39 @@ const HomePage = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const [wishlist, setWishlist] = useState([]);
+
+  useEffect(() => {
+    const storedWishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+    setWishlist(storedWishlist);
+  }, []);
 
   useEffect(() => {
     const fetchSneakers = async () => {
       try {
         const response = await fetch("http://54.37.12.181:1337/api/sneakers");
         const data = await response.json();
-        setSneakers(data.data); // Stocker les sneakers
+        setSneakers(data.data);
       } catch (err) {
         setError("Erreur lors de la récupération des données");
       } finally {
-        setLoading(false); // Arrêter le chargement
+        setLoading(false);
       }
     };
 
     fetchSneakers();
   }, []);
 
-
-// Fonction pour ajouter une sneaker à la wishlist
-const addToWishlist = async (sneakerId) => {
-    const token = localStorage.getItem("token"); // Récupérer le token utilisateur
-
-    if (!token) {
-      alert("Vous devez être connecté pour ajouter à la wishlist !");
-      return;
-    }
-
-    try {
-      const response = await fetch("http://localhost:1337/api/wishlists", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`, // Authentification avec le token
-        },
-        body: JSON.stringify({
-          data: {
-            sneakerId, // ID de la sneaker à ajouter
-          },
-        }),
-      });
-
-      if (!response.ok) {
-        throw new Error("Erreur lors de l'ajout à la wishlist");
-      }
-
-      alert("Sneaker ajoutée à votre wishlist !");
-    } catch (error) {
-      console.error("Erreur :", error.message);
-      alert("Impossible d'ajouter à la wishlist");
+  const addToWishlist = (sneaker) => {
+    const isAlreadyInWishlist = wishlist.some((item) => item.id === sneaker.id);
+    if (!isAlreadyInWishlist) {
+      const updatedWishlist = [...wishlist, sneaker];
+      setWishlist(updatedWishlist);
+      localStorage.setItem("wishlist", JSON.stringify(updatedWishlist));
+    } else {
+      alert("Ce produit est déjà dans la wishlist !");
     }
   };
-
-
-
-
-
-
-
-
 
   const filteredSneakers = sneakers.filter((sneaker) =>
     sneaker.attributes.name.toLowerCase().includes(searchQuery.toLowerCase())
@@ -86,7 +60,7 @@ const addToWishlist = async (sneakerId) => {
         {filteredSneakers.map((sneaker) => (
           <div key={sneaker.id} className="p-4 border rounded shadow-md">
             <img
-              src={sneaker.attributes.image.small} // Afficher l'image de taille "small"
+              src={sneaker.attributes.image.small}
               alt={sneaker.attributes.name}
               className="h-48 w-full object-contain mb-2"
             />
@@ -102,21 +76,12 @@ const addToWishlist = async (sneakerId) => {
               View on Goat
             </a>
 
-
-
-           {/* Bouton Ajouter à la Wishlist */}
-           <button
-              onClick={() => addToWishlist(sneaker.id)} // Appel de la fonction avec l'ID sneaker
-              className="  text-white py-1 px-4 rounded hover:bg-red-600"
+            <button
+              onClick={() => addToWishlist(sneaker)}
+              className="bg-red-500 text-white py-1 px-4 rounded hover:bg-red-600 mt-2"
             >
               ❤ Favoris
             </button>
-
-
-
-
-
-
           </div>
         ))}
       </div>

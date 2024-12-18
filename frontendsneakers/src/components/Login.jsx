@@ -41,7 +41,7 @@ const Login = () => {
       setError("");
 
 
-      navigate("/")
+      navigate("/HomePage")
     } catch (err) {
       setError(err.message); // Affiche l'erreur si la connexion échoue
     }

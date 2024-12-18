@@ -33,6 +33,7 @@ const HomePage = () => {
     if (!isAlreadyInWishlist) {
       const updatedWishlist = [...wishlist, sneaker];
       setWishlist(updatedWishlist);
+      alert("Produit ajouté !")
       localStorage.setItem("wishlist", JSON.stringify(updatedWishlist));
     } else {
       alert("Ce produit est déjà dans la wishlist !");
@@ -47,7 +48,7 @@ const HomePage = () => {
   if (error) return <p>{error}</p>;
 
   return (
-    <div className="p-4">
+    <div className="p-4 min-h-[calc(100vh-4rem)] flex flex-col">
       <input
         type="text"
         placeholder="Rechercher une sneaker"
@@ -56,7 +57,7 @@ const HomePage = () => {
         onChange={(e) => setSearchQuery(e.target.value)}
       />
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 flex-grow">
         {filteredSneakers.map((sneaker) => (
           <div key={sneaker.id} className="p-4 border rounded shadow-md">
             <img
@@ -78,7 +79,7 @@ const HomePage = () => {
 
             <button
               onClick={() => addToWishlist(sneaker)}
-              className="bg-red-500 text-white py-1 px-4 rounded hover:bg-red-600 mt-2"
+              className=" text-white py-1 px-4 rounded hover:bg-red-200 mt-2"
             >
               ❤ Favoris
             </button>

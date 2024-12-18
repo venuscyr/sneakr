@@ -3,31 +3,37 @@ import { House } from 'lucide-react';
 import { User } from 'lucide-react';
 import { Heart } from 'lucide-react';
 import { UserPen } from 'lucide-react';
+import { LogOut } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const Biensur = () => {
 
     return (
-        <div className='bg-current bg-violet-400 flex items-center justify-between'>
+        <div className='bg-current rounded bg-violet-400 flex items-center justify-between'>
 
-            <div className='flex items-center gap-3'>
-                <Menu size={50} />
+            <div className='pl-2 flex items-center gap-3'>
+                <Menu size={40}  />
                 <Link to="/ProfilPage">
-                    <User size={50} />
+                    <User size={40} />
                 </Link>
                 <p className=''>SNEAKER SHOP</p>
             </div>
 
-            <div className='flex items-center gap-3'>
+            <div className='pr-2 flex items-center gap-3'>
                 <Link to="/">
-                    <House size={50} />
+                    <House size={40} />
                 </Link>
                 <Link to="/wishlist">
-                    <Heart size={50} /> 
+                    <Heart size={40} /> 
                 </Link>
                 <Link to="/login">
-                    <UserPen size={50} />
-                </Link>       
+                    <UserPen size={40} />
+                </Link> 
+                <Link to="/Deconnexion">
+                    <LogOut size={40}  />
+                </Link> 
+                
+    
             </div>
 
         </div>

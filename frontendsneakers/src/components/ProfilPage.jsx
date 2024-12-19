@@ -1,13 +1,13 @@
 import { useState, useEffect } from "react";
 
 const Profile = () => {
-  const [user, setUser] = useState(null); // Stocker les informations de l'utilisateur
+  const [user, setUser] = useState(null); 
   
-  const [error, setError] = useState(""); // Gestion des erreurs
+  const [error, setError] = useState(""); 
 
   useEffect(() => {
     const fetchUser = async () => {
-      const token = localStorage.getItem("token"); // Récupérer le token utilisateur
+      const token = localStorage.getItem("token"); 
       if (!token) {
         setError("Vous devez être connecté pour voir votre profil.");
        
@@ -17,7 +17,7 @@ const Profile = () => {
       try {
         const response = await fetch("http://localhost:1337/api/users/me", {
           headers: {
-            Authorization: `Bearer ${token}`, // Envoi du token pour l'authentification
+            Authorization: `Bearer ${token}`, 
           },
         });
 
@@ -26,7 +26,7 @@ const Profile = () => {
         }
 
         const data = await response.json();
-        setUser(data); // Mettre à jour les informations utilisateur
+        setUser(data); 
       } catch (err) {
         setError(err.message);
       } 

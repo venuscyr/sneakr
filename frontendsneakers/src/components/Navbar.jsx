@@ -16,7 +16,7 @@ const Biensur = () => {
                 <Link to="/ProfilPage">
                     <User size={40} />
                 </Link>
-                <p className=''>SNEAKER SHOP</p>
+                <h2 className=''>SNEAKER SHOP</h2>
             </div>
 
             <div className='pr-2 flex items-center gap-3'>

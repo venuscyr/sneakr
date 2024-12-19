@@ -25,14 +25,13 @@ const Register = () => {
 
       const data = await response.json();
       if (response.ok) {
-        console.log("Inscription réussie :", data);
         navigate("/Login")
       } else {
         console.error("Erreur :", data);
         alert("Erreur : " + data.error.message);
       }
     } catch (error) {
-      console.error("Erreur réseau :", error);
+      
       alert("Erreur réseau : " + error.message);
     }
     

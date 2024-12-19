@@ -2,7 +2,6 @@ import './App.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import NavBar from './components/Navbar';
 import Login from './components/Login';
-import Bas from './components/Bas';
 import Register from './components/Register';
 import HomePage from './components/HomePage';
 import Wishlist from './components/Wishlist';
@@ -27,7 +26,7 @@ function App() {
         <Route path="/Deconnexion" element={<Deconnexion />} />
       </Routes>
       </div>
-      <Bas />
+      
     </Router>
     </div>
   );

@@ -3,14 +3,14 @@ import { Link, useNavigate } from 'react-router-dom';
 
 
 const Login = () => {
-  const [email, setEmail] = useState(""); // Pour capturer l'email
-  const [password, setPassword] = useState(""); // Pour capturer le mot de passe
-  const [error, setError] = useState(""); // Pour afficher une erreur si besoin
+  const [email, setEmail] = useState(""); 
+  const [password, setPassword] = useState(""); 
+  const [error, setError] = useState(""); 
   const navigate = useNavigate();
 
 
   const handleSubmit = async (e) => {
-    e.preventDefault(); // Empêche le rechargement de la page
+    e.preventDefault(); 
 
     try {
       const response = await fetch("http://localhost:1337/api/auth/local", {
@@ -31,11 +31,11 @@ const Login = () => {
 
       const data = await response.json();
 
-      // Enregistre le token dans le localStorage pour une future utilisation
-      localStorage.setItem("token", data.jwt);// Token pour les requêtes
-      localStorage.setItem("userId", data.user.id); // ID utilisateur pour la wishlist
+      
+      localStorage.setItem("token", data.jwt);
+      localStorage.setItem("userId", data.user.id); 
 
-      // Réinitialise les champs et supprime les erreurs
+      
       setEmail("");
       setPassword("");
       setError("");
@@ -43,7 +43,7 @@ const Login = () => {
 
       navigate("/HomePage")
     } catch (err) {
-      setError(err.message); // Affiche l'erreur si la connexion échoue
+      setError(err.message); 
     }
   };
 
